@@ -1,0 +1,19 @@
+{{- range $job, $val := .Values.cronjob.crons }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ $.Values.cronjob.crons.name }}
+  namespace: {{ $.Values.cronjob.namespace }}
+  labels:
+    app: {{ $.Values.cronjob.crons.name }}
+    tier: cronjob
+data:
+{{- range .Files.Lines "env" }}
+  {{- $kv := splitn "=" 2 . -}}
+  {{- $k := $kv._0 -}}
+  {{- if $k }}
+  {{ $k }}: {{ $kv._1 | quote }}
+  {{- end }}
+{{- end }}
+---
+{{- end }}

@@ -1,0 +1,17 @@
+apiVersion: v1
+name: backend
+version: 1.0.0
+appVersion: v1
+description: Backend Helm Template
+keywords:
+- git
+- ci
+- deploy
+- backend
+sources:
+- https://git.fpt.work/helm-template
+- https://docs.gitlab.com/runner/
+icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
+maintainers:
+- name: Pham Tuan Anh
+  email: anhpt81@fpt.com.vn

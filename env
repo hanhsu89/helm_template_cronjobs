@@ -1,0 +1,10 @@
+PROJECT_CODE=oncall
+MULTIPLE_DATABASE=true
+PREFIX_DB=FO_
+MINIO_HOST=minio.oncall
+MINIO_USE_SSL=false
+MINIO_ACCESS_KEY=Oncalluser
+MINIO_SECRET_KEY=OncallMini0
+MINIO_BUCKET=oncall
+FWORK_API_ENDPOINT=https://dev.fpt.work/api/v1
+MONGODB_URI=mongodb://fwork:FWork%40123@mongo.dev.fpt.work/?authSource=admin

@@ -1,0 +1,27 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: "{{ .Values.cronjobs.nameJob }}"
+  namespace: "{{ .Values.cronjobs.namespace }}"
+spec:
+  concurrencyPolicy: Allow
+  failedJobsHistoryLimit: 1
+  successfulJobsHistoryLimit: 3
+  schedule: "{{ .Values.cronjobs.schedule }}"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: "{{ .Values.cronjobs.nameJob }}"
+            image: "{{ .Values.cronjobs.image }}:{{ .Values.cronjobs.image_tag }}"
+            envFrom:
+            - configMapRef:
+                name: "{{ .Values.cronjobs.nameJob }}"
+            env:
+              - name: CRON_TZ
+                value: Asia/Ho_Chi_Minh
+              - name: TZ
+                value: Asia/Ho_Chi_Minh
+            imagePullPolicy: "{{ .Values.cronjobs.pullPolicy }}"
+          restartPolicy: "{{ .Values.cronjobs.restartPolicy }}"

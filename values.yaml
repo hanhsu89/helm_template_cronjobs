@@ -1,0 +1,18 @@
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+cronjob:
+  namespace: development
+
+  image:
+    repository: registry.fpt.work/psd/oncall-notifier:latest
+    pullPolicy: "IfNotPresent"
+    restartPolicy: OnFailure
+
+  crons:
+    - id: "0"
+      name: "oncall-one-minute"
+      schedule: "*/1 * * * *"
+    - id: "1"
+      name: "oncall-five-minute"
+      schedule: "*/5 * * * *"
